@@ -1,0 +1,42 @@
+a)
+Ten32():	
+	BL	Ten32
+	MOV	R0,10
+	BX	LR
+
+b)
+Ten64():
+	BL Ten64
+	MOV R0,R1,10
+
+c)
+Incr(unsigned int):
+	ADD	R0,R0,1
+	BX	LR
+
+d)
+Nested1():
+	PUSH	{R3, LR}
+	BL	rand
+	ADD	R0,R0,1
+	POP	{R3,PC}
+
+e)
+Nested2():
+	PUSH	{R4,LR}
+	BL	rand
+	MOV	R4,R0
+	BL	rand
+	ADD	R0,R0,R4
+	POP	{R4,PC}
+
+f)
+PrintTwo(char*, unsigned int):
+	PUSH	{R4,R5,LR}
+	MOV	R4,R0
+	MOV	R5,R1
+	BL	printf
+	ADD	R1,R5,1
+	MOV	R0,R4
+	POP	{R3,R4,R5,LR}
+	B	printf
